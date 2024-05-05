@@ -43,17 +43,17 @@ export default function About({pageInfo}:Props)  {
             viewport={{once: true}}
             src={urlFor(pageInfo?.profilePic).url()}
             className='mt-28 md:mt-0  md:mb-0 w-56 h-55 rounded-full object-cover
-             md:rounded-sm md:w-72  sm:rounded-full xl:w-[400px] xl:h-[450px]'
+             md:rounded-sm md:w-72 sm:w-44 sm:h-64 md:h-95 xl:w-[400px] xl:h-[500px]'
         />
         <div className=' space-y-2 px-0 md:px-10'>
             <h4 className='text-3xl font-semibold'>
-              Here is a{" "}
+              Here is a{}
                 <span className='hover:underline hover:tracking-[0.1px] text-[#778A35] transition-opacity
                  duration-1000 decoration-[#778A35]'>
                     little
                 </span> background
             </h4>
-            <p className=' text-base'>{pageInfo?.backgroundInformation}
+            <p className=' text-base'>{pageInfo.backgroundInformation}
             </p>
         </div>
     </motion.div>
