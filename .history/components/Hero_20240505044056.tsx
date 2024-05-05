@@ -22,14 +22,16 @@ function Hero({pageInfo}: Props) {
     });
   return (
     <div className=' h-screen flex flex-col space-y-8 
+    // eslint-disable-next-line react/jsx-no-comment-textnodes
     items-center justify-center text-center overflow-hidden'>
+        // eslint-disable-next-line react/jsx-no-comment-textnodes
         <BackgroundCircle/>
-        {/* eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text */}
+        // eslint-disable-next-line @next/next/no-img-element
         <img
         className='relative rounded-full h-32 w-32 mx-auto object-cover'
         src={urlFor(pageInfo?.heroImage).url()} />
         <div className=' z-20'>
-            <h2 className=' text-sm uppercase text-gray-500 pb-2 tracking-[15px]'>{pageInfo.role}</h2>
+            <h2 className=' text-sm uppercase text-gray-500 pb-2 tracking-[15px]'>Computer Engineer</h2>
             <h1 className=' text-5xl lg:text-6xl font-semibold px-10'>
                 <span className=' mr-3'>{text}</span>
                 <Cursor cursorColor='#778A35'/>

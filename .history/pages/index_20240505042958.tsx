@@ -38,11 +38,11 @@ export default function Home({pageInfo, experiences, skills, projects, socials,}
         <Header socials = {socials}/>
 
         <section id="hero" className=" snap-start">
-          <Hero pageInfo = {pageInfo}/>
+          <Hero pageInf = {pageInf}/>
         </section>
 
         <section id='about' className=" snap-center">
-          <About pageInfo = {pageInfo}/>
+          <About/>
         </section>
           
         <section id='experiance' className=" snap-center">

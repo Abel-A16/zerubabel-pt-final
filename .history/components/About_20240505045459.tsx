@@ -54,7 +54,7 @@ export default function About({pageInfo}:Props)  {
                     little
                 </span> background
             </h4>
-            <p className=' text-base'>{pageInfo.backgroundInformation}
+            <p className=' text-base'>{pageInfo.}
             </p>
         </div>
 

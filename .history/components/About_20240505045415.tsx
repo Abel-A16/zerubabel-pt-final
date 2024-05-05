@@ -45,7 +45,7 @@ export default function About({pageInfo}:Props)  {
              md:rounded-sm md:w-72 sm:w-44 sm:h-64 md:h-95 xl:w-[400px] xl:h-[500px]'
         />
         return(
-        {/* eslint-disable-next-line react/jsx-key */}
+        // eslint-disable-next-line react/jsx-key
         <div className=' space-y-2 px-0 md:px-10'>
             <h4 className='text-3xl font-semibold'>
             
@@ -54,11 +54,12 @@ export default function About({pageInfo}:Props)  {
                     little
                 </span> background
             </h4>
-            <p className=' text-base'>{pageInfo.backgroundInformation}
+            <p className=' text-base'>{about.detail}
             </p>
         </div>
 
         )
+      })
     </motion.div>
   )
 }

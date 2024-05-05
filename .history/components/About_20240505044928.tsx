@@ -12,7 +12,43 @@ import { PageInfo } from '@/typings';
   };
   
 
-export default function About({pageInfo}:Props)  {
+const About: React.FC = () => {
+
+//     const [newName, setNewName] = useState<string>("");
+//     const [newAge, setNewAge] = useState<number>(0);
+  
+    const [about, setabout] = useState<UserData[]>([]);
+//     const aboutCollectionRef = collection(db, "about");
+  
+//     const createUser = async () => {
+//       await addDoc(aboutCollectionRef, { name: newName, age: Number(newAge) });
+//     };
+  
+//     const updateUser = async (id: string, age: number) => {
+//       const userDoc = doc(db, "about", id);
+//       const newFields = { age: age + 1 };
+//       await updateDoc(userDoc, newFields);
+//     };
+  
+//     const deleteUser = async (id: string) => {
+//       const userDoc = doc(db, "about", id);
+//       await deleteDoc(userDoc);
+//     };
+  
+//     useEffect(() => {
+//       const getabout = async () => {
+//         const data = await getDocs(aboutCollectionRef);
+//         const fetchedabout: UserData[] = [];
+//         data.forEach((doc) => {
+//           fetchedabout.push({ ...doc.data(), id: doc.id } as UserData);
+//         });
+//         setabout(fetchedabout);
+//       };
+  
+//       getabout();
+//     }, []);
+
+
   return (
     <motion.div 
     initial = {{
@@ -44,8 +80,9 @@ export default function About({pageInfo}:Props)  {
             className='mt-28 md:mt-0  md:mb-0 w-56 h-55 rounded-full object-cover
              md:rounded-sm md:w-72 sm:w-44 sm:h-64 md:h-95 xl:w-[400px] xl:h-[500px]'
         />
+      {about.map((about) =>{
         return(
-        {/* eslint-disable-next-line react/jsx-key */}
+        // eslint-disable-next-line react/jsx-key
         <div className=' space-y-2 px-0 md:px-10'>
             <h4 className='text-3xl font-semibold'>
             
@@ -54,11 +91,14 @@ export default function About({pageInfo}:Props)  {
                     little
                 </span> background
             </h4>
-            <p className=' text-base'>{pageInfo.backgroundInformation}
+            <p className=' text-base'>{about.detail}
             </p>
         </div>
 
         )
+      })}
     </motion.div>
   )
 }
+
+export default About

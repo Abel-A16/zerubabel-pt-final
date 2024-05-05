@@ -42,7 +42,7 @@ export default function Home({pageInfo, experiences, skills, projects, socials,}
         </section>
 
         <section id='about' className=" snap-center">
-          <About pageInfo = {pageInfo}/>
+          <About />
         </section>
           
         <section id='experiance' className=" snap-center">

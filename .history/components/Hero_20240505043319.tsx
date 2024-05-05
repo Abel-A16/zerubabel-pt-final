@@ -4,7 +4,6 @@ import React from 'react'
 import { Cursor, useTypewriter } from "react-simple-typewriter";
 import BackgroundCircle from './BackgroundCircle';
 import { PageInfo } from '@/typings';
-import { urlFor } from '@/sanity';
 
 type Props = {
     pageInfo: PageInfo
@@ -13,7 +12,7 @@ type Props = {
 function Hero({pageInfo}: Props) {
     const [text, count] = useTypewriter({
         words:[
-            `Hi, I Am ${pageInfo?.name}`,
+            `Hi, I Am ${pageInfo?}`,
             "Guy-who-loves-coffee.tsx",
             "<ButLoves-To CodeMore/>"
         ],
@@ -24,12 +23,11 @@ function Hero({pageInfo}: Props) {
     <div className=' h-screen flex flex-col space-y-8 
     items-center justify-center text-center overflow-hidden'>
         <BackgroundCircle/>
-        {/* eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text */}
-        <img
+        <Image
         className='relative rounded-full h-32 w-32 mx-auto object-cover'
-        src={urlFor(pageInfo?.heroImage).url()} />
+        src="/nextProfile.jpg" width={300} height={300} alt="" />
         <div className=' z-20'>
-            <h2 className=' text-sm uppercase text-gray-500 pb-2 tracking-[15px]'>{pageInfo.role}</h2>
+            <h2 className=' text-sm uppercase text-gray-500 pb-2 tracking-[15px]'>Computer Engineer</h2>
             <h1 className=' text-5xl lg:text-6xl font-semibold px-10'>
                 <span className=' mr-3'>{text}</span>
                 <Cursor cursorColor='#778A35'/>
