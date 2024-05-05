@@ -1,0 +1,3 @@
+interface SanityBody {
+    _createdAt: 
+}
