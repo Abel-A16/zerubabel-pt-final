@@ -29,7 +29,7 @@ function Skills({skills}: Props) {
         <Title text={'Skills'}/>
         <h3 className=' absolute top-36 uppercase tracking-[3px]
         text-gray-500 text-sm mb-12' >
-            Hover over a skill for current proficiency
+            Hover over a skill for cu proficiency
         </h3>
         <div className='mt-5 lg:mt-11 md:mt-12 2xl:m-36 grid grid-cols-4 gap-6'>
             {skills?.map((skill, index) => (

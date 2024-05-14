@@ -36,10 +36,10 @@ function Projects({projects}: Props) {
         snap-x snap-mandatory z-20 scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#778A35]/80'>
             {projects?.map((project, i) => (
                 // eslint-disable-next-line react/jsx-key
-                <div className='w-screen flex-shrink-0 snap-center flex flex-col 
-                items-center justify-center px-20 md:px-32 h-screen'>
+                <div className='w-screen flex-shrink-0 snap-center flex flex-col  space-y-3
+                items-center justify-center p-20 md:p-32 h-screen'>
                     <div className='flex flex-row justify-center items-center ' >
-                    <ArrowLeftIcon className="flex-shrink-0  flex flex-row  space-y-0
+                    <ArrowLeftIcon className="flex-shrink-0  flex flex-row  space-y-3
                 items-center justify-center   h-5 w-5 text-white-700 opacity-70" />
                     <motion.img
                         initial={{

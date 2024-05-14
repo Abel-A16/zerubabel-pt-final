@@ -5,7 +5,7 @@ interface TitleProps {
 }
 
 function Title({ text }: TitleProps) {
-  return <h3 className='absolute top-16 hover:tracking-[20.5px] uppercase tracking-[20px] 
+  return <h3 className='absolute top-2 hover:tracking-[20.5px] uppercase tracking-[20px] 
   text-gray-500 text-2xl'>{text}</h3 >;
 }
 

@@ -37,7 +37,7 @@ function Projects({projects}: Props) {
             {projects?.map((project, i) => (
                 // eslint-disable-next-line react/jsx-key
                 <div className='w-screen flex-shrink-0 snap-center flex flex-col 
-                items-center justify-center px-20 md:px-32 h-screen'>
+                items-center justify-center p-20 md:px-32 h-screen'>
                     <div className='flex flex-row justify-center items-center ' >
                     <ArrowLeftIcon className="flex-shrink-0  flex flex-row  space-y-0
                 items-center justify-center   h-5 w-5 text-white-700 opacity-70" />
