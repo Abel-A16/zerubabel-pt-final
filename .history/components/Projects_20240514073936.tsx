@@ -36,7 +36,7 @@ function Projects({projects}: Props) {
         snap-x snap-mandatory z-20 scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#778A35]/80'>
             {projects?.map((project, i) => (
                 // eslint-disable-next-line react/jsx-key
-                <div key={project._id} className='w-screen flex-shrink-0 snap-center flex flex-col 
+                <div key={project.} className='w-screen flex-shrink-0 snap-center flex flex-col 
                 items-center justify-center px-20 md:px-32 h-screen'>
                     <div className='flex flex-row justify-center items-center ' >
                     <ArrowLeftIcon className="flex-shrink-0  flex flex-row  space-y-0

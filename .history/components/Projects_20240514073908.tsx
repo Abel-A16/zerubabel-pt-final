@@ -32,11 +32,11 @@ function Projects({projects}: Props) {
     flex-col text-left md:flex-row max-w-full justify-evenly
     mx-auto items-center z-0'>
         <Title text={'Projects'}/>
-        <div  className='h-screen relative w-full flex overflow-x-scroll   p-0 mx-0  overflow-y-hidden 
+        <div key={project} className='h-screen relative w-full flex overflow-x-scroll   p-0 mx-0  overflow-y-hidden 
         snap-x snap-mandatory z-20 scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#778A35]/80'>
             {projects?.map((project, i) => (
                 // eslint-disable-next-line react/jsx-key
-                <div key={project._id} className='w-screen flex-shrink-0 snap-center flex flex-col 
+                <div className='w-screen flex-shrink-0 snap-center flex flex-col 
                 items-center justify-center px-20 md:px-32 h-screen'>
                     <div className='flex flex-row justify-center items-center ' >
                     <ArrowLeftIcon className="flex-shrink-0  flex flex-row  space-y-0

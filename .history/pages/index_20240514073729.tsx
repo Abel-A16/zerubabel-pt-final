@@ -32,7 +32,7 @@ export default function Home({pageInfo, experiences, skills, projects, socials,}
     snap-y snap-mandatory overflow-y-scroll 
     overflow-x-hidden z-0 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#778A35]/80">
         <Head>
-          <title>{pageInfo.name} Portfolio</title>
+          <title>{Zerubabel&aposs} Portfolio</title>
         </Head>
         
         <Header socials = {socials}/>
