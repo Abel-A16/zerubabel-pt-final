@@ -9,13 +9,16 @@ const query = `*[_type == "pageInfo"][0]{
     role,
     heroImage,
     name,
-    phoneNumber,
-    profilePic, 
+    profilePic
 }`;
 
-export const fetchPageInfo = async (): Promise<PageInfo> => {
-  
-    const pageInfo: PageInfo= await SanityClient.fetch(query);
+export const fetchPageInfo = async (): Promise<PageInfo | null> => {
+  try {
+    const pageInfo: PageInfo | null = await SanityClient.fetch(query);
     console.log("Fetched page info:", pageInfo);
     return pageInfo;
-}
+  } catch (error) {
+    console.error("Error fetching page info:", error);
+    return null;
+  }
+};

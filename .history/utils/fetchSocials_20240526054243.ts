@@ -6,7 +6,7 @@ const query = `*[_type == "social"]{
     url
 }`;
 
-export const fetchSocials = async (): Promise<Social[] > => {
+export const fetchSocials = async (): Promise<Social[] | null> => {
 
     const socials: Social[] = await SanityClient.fetch(query);
     console.log("Fetched socials:", socials);

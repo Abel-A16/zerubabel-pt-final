@@ -7,7 +7,7 @@ const query = `*[_type == "skill"]{
     progress,
 }`;
 
-export const fetchSkills = async (): Promise<Skill[] > => {
+export const fetchSkills = async (): Promise<Skill[] | null> => {
 
     const skills: Skill[]= await SanityClient.fetch(query);
     console.log("Fetched skills:", skills);

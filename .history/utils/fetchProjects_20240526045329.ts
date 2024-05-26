@@ -14,8 +14,13 @@ const query = `*[_type == "project"]{
       }
 }`;
 
-export const fetchProjects = async (): Promise<Project[] > => {
-    const projects: Project[] = await SanityClient.fetch(query);
+export const fetchProjects = async (): Promise<Project[] | null> => {
+  try {
+    const projects: Project[] | null = await SanityClient.fetch(query);
     console.log("Fetched projects:", projects);
     return projects;
-}
+  } catch (error) {
+    console.error("Error fetching projects:", error);
+    return null;
+  }
+};
