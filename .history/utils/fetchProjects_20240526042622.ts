@@ -2,7 +2,7 @@ import { SanityClient } from '../sanity';
 import { Project } from "@/typings";
 
 const query = `*[_type == "project"]{
-  _id,
+  _id.  
   title,
     _type,
     image,

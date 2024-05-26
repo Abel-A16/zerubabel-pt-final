@@ -1,6 +1,7 @@
 import { SanityClient } from '../sanity';
 import { Experience } from '@/typings';
 
+// Your GROQ query
 const query = `*[_type == "experience"]{
   _id,
   company,
@@ -10,11 +11,7 @@ const query = `*[_type == "experience"]{
   isCurrentlyWorkingHere,
   jobTitle,
   points,
-  technologies[]->{
-    image,
-    progress,
-    title
-  }
+  technologies
 }`;
 
 export const fetchExperiences = async (): Promise<Experience[]> => {

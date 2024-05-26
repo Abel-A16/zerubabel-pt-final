@@ -2,7 +2,6 @@ import { SanityClient } from '../sanity';
 import { PageInfo } from "@/typings";
 
 const query = `*[_type == "pageInfo"][0]{
-    _id,
     address,
     backgroundInformation,
     email,
