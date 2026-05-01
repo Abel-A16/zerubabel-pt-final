@@ -113,11 +113,10 @@ export default function About({ pageInfo }: Props) {
               className="relative rounded-2xl overflow-hidden"
               style={{ border: "2px solid #1F2937" }}
             >
-              <Image
+              <img
                 src={urlFor(pageInfo?.profilePic).url()}
                 alt={pageInfo?.name || "Profile"}
-                fill
-                className="object-cover transition-all duration-500 group-hover:scale-105"
+                className="w-64 h-64 md:w-80 md:h-80 lg:w-[400px] lg:h-[450px] object-cover transition-all duration-500 group-hover:scale-105"
               />
             </div>
             {/* Decorative badge on image */}
