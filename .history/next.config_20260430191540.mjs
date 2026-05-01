@@ -10,9 +10,6 @@ const nextConfig = {
       },
     ],
   },
-  // Add any other config options you have here
-  reactStrictMode: true,
-  swcMinify: true,
 };
 
-export default nextConfig;
+module.exports = nextConfig;

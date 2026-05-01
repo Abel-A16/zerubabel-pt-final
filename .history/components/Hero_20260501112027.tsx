@@ -32,72 +32,47 @@ function Hero({ pageInfo }: Props) {
     <section
       id="hero"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      style={{ backgroundColor: "#0B0F19" }}
+      style={{ backgroundColor: "#F2F2F2" }}
     >
-      {/* Single Irregular Wave Pattern */}
-      <div className="absolute inset-0 opacity-[0.1] pointer-events-none">
+      {/* Beautiful Polka Dot Pattern with varying sizes */}
+      <div className="absolute inset-0 opacity-15">
         <svg
-          className="absolute w-full h-full"
+          className="absolute inset-0 w-full h-full"
           xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="none"
         >
           <defs>
             <pattern
-              id="irregularWave"
+              id="beautifulDots"
               x="0"
               y="0"
-              width="200"
-              height="120"
+              width="80"
+              height="80"
               patternUnits="userSpaceOnUse"
-              patternTransform="rotate(10)"
             >
-              {/* Main irregular wave */}
-              <path
-                d="M0 60 
-                   C20 20, 40 80, 60 50 
-                   C80 20, 100 90, 120 55 
-                   C140 20, 160 85, 180 50 
-                   C195 30, 198 70, 200 60"
-                fill="none"
-                stroke="#3B82F6"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              {/* Secondary softer wave */}
-              <path
-                d="M0 80 
-                   C30 50, 50 100, 80 70 
-                   C110 40, 140 95, 170 65 
-                   C190 50, 195 75, 200 80"
-                fill="none"
-                stroke="#22C55E"
-                strokeWidth="1.2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                opacity="0.6"
-              />
-              {/* Subtle connecting dots */}
-              <circle cx="60" cy="50" r="1.5" fill="#3B82F6" opacity="0.4" />
-              <circle cx="120" cy="55" r="1.5" fill="#22C55E" opacity="0.4" />
-              <circle cx="180" cy="50" r="1.5" fill="#3B82F6" opacity="0.4" />
+              <circle cx="10" cy="10" r="2" fill="#174D38" opacity="0.6" />
+              <circle cx="40" cy="40" r="1.5" fill="#4D1717" opacity="0.4" />
+              <circle cx="70" cy="10" r="1" fill="#174D38" opacity="0.3" />
+              <circle cx="25" cy="65" r="1.8" fill="#CBCBCB" opacity="0.5" />
+              <circle cx="55" cy="25" r="2.2" fill="#174D38" opacity="0.4" />
+              <circle cx="75" cy="75" r="1.2" fill="#4D1717" opacity="0.35" />
+              <circle cx="10" cy="50" r="1.5" fill="#CBCBCB" opacity="0.45" />
+              <circle cx="60" cy="70" r="1" fill="#174D38" opacity="0.3" />
             </pattern>
           </defs>
-          <rect width="100%" height="100%" fill="url(#irregularWave)" />
+          <rect width="100%" height="100%" fill="url(#beautifulDots)" />
         </svg>
       </div>
 
-      {/* Gradient Orbs for Depth */}
-      <div className="absolute top-20 left-10 w-72 h-72 rounded-full bg-[#3B82F6] opacity-10 blur-[100px]" />
-      <div className="absolute bottom-20 right-10 w-96 h-96 rounded-full bg-[#22C55E] opacity-5 blur-[120px]" />
+      {/* Soft Radial Gradient Overlay */}
+      <div className="absolute inset-0 bg-radial from-transparent via-transparent to-[#F2F2F2]/80" />
 
-      {/* Profile Image */}
+      {/* Profile Image with Glow Effect */}
       <div className="absolute top-8 right-8 z-20">
         <div className="relative group">
-          <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-[#3B82F6] to-[#22C55E] opacity-40 blur-md group-hover:opacity-100 transition duration-500" />
+          <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-[#174D38] to-[#4D1717] opacity-40 blur-md group-hover:opacity-100 transition duration-500" />
           <div
             className="relative w-14 h-14 md:w-16 md:h-16 rounded-full overflow-hidden border-2"
-            style={{ borderColor: "#3B82F6", backgroundColor: "#111827" }}
+            style={{ borderColor: "#CBCBCB", backgroundColor: "#F2F2F2" }}
           >
             <Image
               src={urlFor(pageInfo?.heroImage).url()}
@@ -111,26 +86,22 @@ function Hero({ pageInfo }: Props) {
       </div>
 
       <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-12 text-center">
-        {/* Professional Badge */}
+        {/* Professional Badge with Icon */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
           <span
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs md:text-sm font-medium mb-6"
-            style={{
-              backgroundColor: "#111827",
-              color: "#3B82F6",
-              border: "1px solid #3B82F6/20",
-            }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs md:text-sm font-medium mb-6 shadow-sm"
+            style={{ backgroundColor: "#174D38", color: "#F2F2F2" }}
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-[#22C55E] animate-pulse" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#F2F2F2] animate-pulse" />
             Fullstack Developer & Technical Trainer
           </span>
         </motion.div>
 
-        {/* Name with Typewriter */}
+        {/* Name with Typewriter & Underline Effect */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -139,14 +110,14 @@ function Hero({ pageInfo }: Props) {
         >
           <h1
             className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight"
-            style={{ color: "#E5E7EB" }}
+            style={{ color: "#174D38" }}
           >
             {text}
-            <Cursor cursorColor="#22C55E" />
+            <Cursor cursorColor="#4D1717" />
           </h1>
           <div
             className="w-24 h-0.5 mx-auto mt-6"
-            style={{ backgroundColor: "#3B82F6" }}
+            style={{ backgroundColor: "#CBCBCB" }}
           />
         </motion.div>
 
@@ -156,14 +127,14 @@ function Hero({ pageInfo }: Props) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-base md:text-lg max-w-2xl mx-auto mb-8 leading-relaxed"
-          style={{ color: "#E5E7EB", opacity: 0.7 }}
+          style={{ color: "#174D38", opacity: 0.8 }}
         >
           Building production-level systems for businesses, educational
           institutions, and community organizations while training the next
           generation of developers.
         </motion.p>
 
-        {/* CTA Buttons */}
+        {/* CTA Buttons with Hover Effects */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -172,33 +143,33 @@ function Hero({ pageInfo }: Props) {
         >
           <a href="#projects">
             <button
-              className="group relative px-8 py-3 rounded-md font-semibold transition-all duration-300 transform hover:-translate-y-1 overflow-hidden shadow-lg"
-              style={{ backgroundColor: "#3B82F6", color: "#0B0F19" }}
+              className="group relative px-8 py-3 rounded-md font-semibold transition-all duration-300 transform hover:-translate-y-1 overflow-hidden shadow-sm hover:shadow-md"
+              style={{ backgroundColor: "#174D38", color: "#F2F2F2" }}
               onMouseEnter={(e) =>
-                (e.currentTarget.style.backgroundColor = "#22C55E")
+                (e.currentTarget.style.backgroundColor = "#4D1717")
               }
               onMouseLeave={(e) =>
-                (e.currentTarget.style.backgroundColor = "#3B82F6")
+                (e.currentTarget.style.backgroundColor = "#174D38")
               }
             >
-              View Projects
+              <span className="relative z-10">View Projects</span>
             </button>
           </a>
           <a href="#contact">
             <button
               className="relative px-8 py-3 rounded-md border font-semibold transition-all duration-300 transform hover:-translate-y-1"
               style={{
-                borderColor: "#3B82F6",
-                color: "#E5E7EB",
+                borderColor: "#174D38",
+                color: "#174D38",
                 backgroundColor: "transparent",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "#3B82F6";
-                e.currentTarget.style.color = "#0B0F19";
+                e.currentTarget.style.backgroundColor = "#174D38";
+                e.currentTarget.style.color = "#F2F2F2";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.backgroundColor = "transparent";
-                e.currentTarget.style.color = "#E5E7EB";
+                e.currentTarget.style.color = "#174D38";
               }}
             >
               Let's Connect
@@ -206,7 +177,7 @@ function Hero({ pageInfo }: Props) {
           </a>
         </motion.div>
 
-        {/* Social Links */}
+        {/* Social/Contact Links with Hover Underline */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -219,14 +190,14 @@ function Hero({ pageInfo }: Props) {
               target="_blank"
               rel="noopener noreferrer"
               className="group relative transition-colors pb-1"
-              style={{ color: "#9CA3AF" }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "#3B82F6")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "#9CA3AF")}
+              style={{ color: "#174D38" }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "#4D1717")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "#174D38")}
             >
               GitHub
               <span
                 className="absolute bottom-0 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300"
-                style={{ backgroundColor: "#3B82F6" }}
+                style={{ backgroundColor: "#4D1717" }}
               />
             </a>
           )}
@@ -236,14 +207,14 @@ function Hero({ pageInfo }: Props) {
               target="_blank"
               rel="noopener noreferrer"
               className="group relative transition-colors pb-1"
-              style={{ color: "#9CA3AF" }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "#3B82F6")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "#9CA3AF")}
+              style={{ color: "#174D38" }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "#4D1717")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "#174D38")}
             >
               LinkedIn
               <span
                 className="absolute bottom-0 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300"
-                style={{ backgroundColor: "#3B82F6" }}
+                style={{ backgroundColor: "#4D1717" }}
               />
             </a>
           )}
@@ -251,25 +222,25 @@ function Hero({ pageInfo }: Props) {
             <a
               href={`mailto:${pageInfo.email}`}
               className="group relative transition-colors pb-1"
-              style={{ color: "#9CA3AF" }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "#3B82F6")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "#9CA3AF")}
+              style={{ color: "#174D38" }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "#4D1717")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "#174D38")}
             >
               Email
               <span
                 className="absolute bottom-0 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300"
-                style={{ backgroundColor: "#3B82F6" }}
+                style={{ backgroundColor: "#4D1717" }}
               />
             </a>
           )}
-          <span style={{ color: "#374151" }}>|</span>
-          <span style={{ color: "#9CA3AF" }}>
+          <span style={{ color: "#CBCBCB" }}>|</span>
+          <span style={{ color: "#174D38", opacity: 0.6 }}>
             Based in Addis Ababa, Ethiopia
           </span>
         </motion.div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Fancy Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -279,9 +250,9 @@ function Hero({ pageInfo }: Props) {
         <a
           href="#about"
           className="flex flex-col items-center gap-2 transition-colors group"
-          style={{ color: "#9CA3AF" }}
-          onMouseEnter={(e) => (e.currentTarget.style.color = "#3B82F6")}
-          onMouseLeave={(e) => (e.currentTarget.style.color = "#9CA3AF")}
+          style={{ color: "#174D38" }}
+          onMouseEnter={(e) => (e.currentTarget.style.color = "#4D1717")}
+          onMouseLeave={(e) => (e.currentTarget.style.color = "#174D38")}
         >
           <span className="text-xs tracking-wider uppercase">Scroll</span>
           <div
@@ -297,6 +268,17 @@ function Hero({ pageInfo }: Props) {
           </div>
         </a>
       </motion.div>
+
+      {/* Add this to your globals.css */}
+      <style jsx>{`
+        .bg-radial {
+          background: radial-gradient(
+            circle at center,
+            transparent 0%,
+            #f2f2f2 100%
+          );
+        }
+      `}</style>
     </section>
   );
 }

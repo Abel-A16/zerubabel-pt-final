@@ -25,16 +25,16 @@ function Header({ socials }: Props) {
     <>
       <header
         className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-          isScrolled ? "backdrop-blur-xl shadow-lg" : "bg-transparent"
+          isScrolled ? "backdrop-blur-md shadow-sm" : "bg-transparent"
         }`}
         style={{
-          backgroundColor: isScrolled ? "#0B0F19" : "transparent",
-          borderBottomColor: "#1F2937",
+          backgroundColor: isScrolled ? "#F2F2F2" : "transparent",
+          borderBottomColor: "#CBCBCB",
           borderBottomWidth: isScrolled ? "1px" : "0px",
         }}
       >
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          {/* Logo */}
+          {/* Logo / Name with Fancy Accent */}
           <motion.div
             initial={{ x: -50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
@@ -44,12 +44,12 @@ function Header({ socials }: Props) {
             <a
               href="#hero"
               className="font-bold text-xl tracking-tight transition-colors"
-              style={{ color: "#E5E7EB" }}
+              style={{ color: "#174D38" }}
             >
-              Z<span style={{ color: "#3B82F6" }}>E</span>
+              Z<span style={{ color: "#CBCBCB" }}>E</span>
               <span
                 className="text-sm ml-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                style={{ color: "#22C55E" }}
+                style={{ color: "#4D1717" }}
               >
                 .
               </span>
@@ -63,35 +63,38 @@ function Header({ socials }: Props) {
             transition={{ duration: 0.6 }}
             className="hidden md:flex items-center gap-8"
           >
+            {/* Navigation Links with Underline Effect */}
             <nav className="flex gap-6 text-sm">
-              {["About", "Experience", "Skills", "Projects"].map((item) => (
-                <a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
-                  className="group relative transition-colors pb-1"
-                  style={{ color: "#9CA3AF" }}
-                  onMouseEnter={(e) =>
-                    (e.currentTarget.style.color = "#3B82F6")
-                  }
-                  onMouseLeave={(e) =>
-                    (e.currentTarget.style.color = "#9CA3AF")
-                  }
-                >
-                  {item}
-                  <span
-                    className="absolute bottom-0 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300"
-                    style={{ backgroundColor: "#3B82F6" }}
-                  />
-                </a>
-              ))}
+              {["About", "Experience", "Skills", "Projects"].map(
+                (item, index) => (
+                  <a
+                    key={item}
+                    href={`#${item.toLowerCase()}`}
+                    className="group relative transition-colors pb-1"
+                    style={{ color: "#174D38" }}
+                    onMouseEnter={(e) =>
+                      (e.currentTarget.style.color = "#4D1717")
+                    }
+                    onMouseLeave={(e) =>
+                      (e.currentTarget.style.color = "#174D38")
+                    }
+                  >
+                    {item}
+                    <span
+                      className="absolute bottom-0 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300"
+                      style={{ backgroundColor: "#4D1717" }}
+                    />
+                  </a>
+                ),
+              )}
             </nav>
 
-            {/* Social Icons */}
+            {/* Social Icons with Hover Scale */}
             <div
               className="flex items-center gap-2 border-l pl-6"
-              style={{ borderLeftColor: "#1F2937" }}
+              style={{ borderLeftColor: "#CBCBCB" }}
             >
-              {socials.slice(0, 3).map((social) => (
+              {socials.slice(0, 3).map((social, idx) => (
                 <motion.div
                   key={social._id}
                   whileHover={{ scale: 1.1, rotate: 5 }}
@@ -100,29 +103,29 @@ function Header({ socials }: Props) {
                   <SocialIcon
                     url={social.url}
                     bgColor="transparent"
-                    fgColor="#9CA3AF"
+                    fgColor="#174D38"
                     style={{ width: 32, height: 32 }}
                   />
                 </motion.div>
               ))}
             </div>
 
-            {/* Contact Button */}
+            {/* Contact Button with Glow Effect */}
             <a href="#contact">
               <button
                 className="group relative px-5 py-2 rounded-md text-sm transition-all duration-300 flex items-center gap-2 overflow-hidden"
                 style={{
-                  border: `1px solid #3B82F6`,
-                  color: "#E5E7EB",
+                  border: `1px solid #174D38`,
+                  color: "#174D38",
                   backgroundColor: "transparent",
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = "#3B82F6";
-                  e.currentTarget.style.color = "#0B0F19";
+                  e.currentTarget.style.backgroundColor = "#174D38";
+                  e.currentTarget.style.color = "#F2F2F2";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.backgroundColor = "transparent";
-                  e.currentTarget.style.color = "#E5E7EB";
+                  e.currentTarget.style.color = "#174D38";
                 }}
               >
                 <EnvelopeIcon className="h-4 w-4 transition-transform group-hover:scale-110" />
@@ -135,7 +138,7 @@ function Header({ socials }: Props) {
           <motion.button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="md:hidden p-2 rounded-md"
-            style={{ color: "#E5E7EB" }}
+            style={{ color: "#174D38" }}
             whileTap={{ scale: 0.95 }}
           >
             {isMobileMenuOpen ? (
@@ -154,8 +157,8 @@ function Header({ socials }: Props) {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.3 }}
-          className="fixed top-[73px] left-0 right-0 backdrop-blur-xl shadow-lg border-b z-40 md:hidden"
-          style={{ backgroundColor: "#0B0F19", borderBottomColor: "#1F2937" }}
+          className="fixed top-[73px] left-0 right-0 backdrop-blur-md shadow-lg border-b z-40 md:hidden"
+          style={{ backgroundColor: "#F2F2F2", borderBottomColor: "#CBCBCB" }}
         >
           <div className="flex flex-col p-6 gap-5">
             {["About", "Experience", "Skills", "Projects", "Contact"].map(
@@ -165,12 +168,12 @@ function Header({ socials }: Props) {
                   href={`#${item.toLowerCase()}`}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="transition-colors py-2 text-base"
-                  style={{ color: "#9CA3AF" }}
+                  style={{ color: "#174D38" }}
                   onMouseEnter={(e) =>
-                    (e.currentTarget.style.color = "#3B82F6")
+                    (e.currentTarget.style.color = "#4D1717")
                   }
                   onMouseLeave={(e) =>
-                    (e.currentTarget.style.color = "#9CA3AF")
+                    (e.currentTarget.style.color = "#174D38")
                   }
                 >
                   {item}
@@ -180,14 +183,14 @@ function Header({ socials }: Props) {
 
             <div
               className="flex gap-4 pt-4 border-t"
-              style={{ borderTopColor: "#1F2937" }}
+              style={{ borderTopColor: "#CBCBCB" }}
             >
               {socials.map((social) => (
                 <SocialIcon
                   key={social._id}
                   url={social.url}
                   bgColor="transparent"
-                  fgColor="#9CA3AF"
+                  fgColor="#174D38"
                   style={{ width: 36, height: 36 }}
                   className="hover:scale-110 transition-transform"
                 />

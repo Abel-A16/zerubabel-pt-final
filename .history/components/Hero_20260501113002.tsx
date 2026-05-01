@@ -34,56 +34,47 @@ function Hero({ pageInfo }: Props) {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       style={{ backgroundColor: "#0B0F19" }}
     >
-      {/* Single Irregular Wave Pattern */}
-      <div className="absolute inset-0 opacity-[0.1] pointer-events-none">
+      {/* Animated Wave Pattern */}
+      <div className="absolute inset-0 opacity-[0.08]">
         <svg
-          className="absolute w-full h-full"
+          className="absolute inset-0 w-full h-full"
           xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="none"
         >
           <defs>
             <pattern
-              id="irregularWave"
+              id="wavePattern"
               x="0"
               y="0"
-              width="200"
-              height="120"
+              width="120"
+              height="60"
               patternUnits="userSpaceOnUse"
-              patternTransform="rotate(10)"
             >
-              {/* Main irregular wave */}
               <path
-                d="M0 60 
-                   C20 20, 40 80, 60 50 
-                   C80 20, 100 90, 120 55 
-                   C140 20, 160 85, 180 50 
-                   C195 30, 198 70, 200 60"
+                d="M0 30 Q15 10 30 30 T60 30 T90 30 T120 30"
                 fill="none"
                 stroke="#3B82F6"
-                strokeWidth="2"
+                strokeWidth="1.5"
                 strokeLinecap="round"
-                strokeLinejoin="round"
               />
-              {/* Secondary softer wave */}
               <path
-                d="M0 80 
-                   C30 50, 50 100, 80 70 
-                   C110 40, 140 95, 170 65 
-                   C190 50, 195 75, 200 80"
+                d="M0 45 Q15 25 30 45 T60 45 T90 45 T120 45"
                 fill="none"
                 stroke="#22C55E"
-                strokeWidth="1.2"
+                strokeWidth="1"
                 strokeLinecap="round"
-                strokeLinejoin="round"
                 opacity="0.6"
               />
-              {/* Subtle connecting dots */}
-              <circle cx="60" cy="50" r="1.5" fill="#3B82F6" opacity="0.4" />
-              <circle cx="120" cy="55" r="1.5" fill="#22C55E" opacity="0.4" />
-              <circle cx="180" cy="50" r="1.5" fill="#3B82F6" opacity="0.4" />
+              <path
+                d="M0 15 Q15 -5 30 15 T60 15 T90 15 T120 15"
+                fill="none"
+                stroke="#3B82F6"
+                strokeWidth="0.8"
+                strokeLinecap="round"
+                opacity="0.4"
+              />
             </pattern>
           </defs>
-          <rect width="100%" height="100%" fill="url(#irregularWave)" />
+          <rect width="100%" height="100%" fill="url(#wavePattern)" />
         </svg>
       </div>
 
