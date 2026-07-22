@@ -13,6 +13,9 @@
 /.next/
 /out/
 
+.history/
+dist/
+
 sanity/node_modules
 
 # production

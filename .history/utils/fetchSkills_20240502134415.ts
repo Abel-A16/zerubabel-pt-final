@@ -1,1 +1,0 @@
-import { Skill } from "@/typings";
