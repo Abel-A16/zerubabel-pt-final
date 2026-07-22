@@ -106,11 +106,11 @@ export default function About({ pageInfo }: Props) {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="relative group"
+            className="relative group w-64 h-64 sm:w-80 sm:h-80 flex-shrink-0"
           >
             <div className="absolute -inset-2 rounded-2xl bg-gradient-to-r from-[#3B82F6] to-[#22C55E] opacity-20 blur-xl group-hover:opacity-40 transition duration-500" />
             <div
-              className="relative rounded-2xl overflow-hidden"
+              className="relative w-full h-full rounded-2xl overflow-hidden"
               style={{ border: "2px solid #1F2937" }}
             >
               <Image
@@ -126,7 +126,7 @@ export default function About({ pageInfo }: Props) {
               style={{
                 backgroundColor: "#111827",
                 color: "#22C55E",
-                border: "1px solid #22C55E/30",
+                border: "1px solid rgba(34, 197, 94, 0.3)",
               }}
             >
               5+ Years
@@ -175,7 +175,7 @@ export default function About({ pageInfo }: Props) {
               >
                 <div
                   className="p-2 rounded-lg"
-                  style={{ backgroundColor: "#3B82F6/10" }}
+                  style={{ backgroundColor: "rgba(59, 130, 246, 0.1)" }}
                 >
                   <CodeBracketIcon
                     className="w-6 h-6"
@@ -201,7 +201,7 @@ export default function About({ pageInfo }: Props) {
               >
                 <div
                   className="p-2 rounded-lg"
-                  style={{ backgroundColor: "#22C55E/10" }}
+                  style={{ backgroundColor: "rgba(34, 197, 94, 0.1)" }}
                 >
                   <AcademicCapIcon
                     className="w-6 h-6"
@@ -227,7 +227,7 @@ export default function About({ pageInfo }: Props) {
               >
                 <div
                   className="p-2 rounded-lg"
-                  style={{ backgroundColor: "#3B82F6/10" }}
+                  style={{ backgroundColor: "rgba(59, 130, 246, 0.1)" }}
                 >
                   <UserIcon className="w-6 h-6" style={{ color: "#3B82F6" }} />
                 </div>
