@@ -48,6 +48,10 @@ export default function Home({pageInfo, experiences, skills, projects, socials,}
           property="og:image"
           content="https://zerubabelendale.vercel.app/og-image.png"
         />
+        <meta
+          property="og:image:alt"
+          content="Zerubabel Endale — Fullstack Developer & Technical Trainer portfolio preview"
+        />
         <meta property="og:url" content="https://zerubabelendale.vercel.app" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />

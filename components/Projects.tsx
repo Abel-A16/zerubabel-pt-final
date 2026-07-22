@@ -1,14 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import React, { useRef, useState } from "react";
-import Title from "./Title";
+import React from "react";
 import { motion } from "framer-motion";
-import {
-  ArrowLeftIcon,
-  ArrowRightIcon,
-  LinkIcon,
-  CodeBracketIcon,
-} from "@heroicons/react/24/outline";
+import { LinkIcon, CodeBracketIcon } from "@heroicons/react/24/outline";
 import { Project } from "@/typings";
 import { urlFor } from "@/sanity";
 
@@ -17,26 +11,6 @@ type Props = {
 };
 
 function Projects({ projects }: Props) {
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const scroll = (direction: "left" | "right") => {
-    if (scrollRef.current) {
-      const scrollAmount = scrollRef.current.clientWidth;
-      const newScrollLeft =
-        direction === "left"
-          ? scrollRef.current.scrollLeft - scrollAmount
-          : scrollRef.current.scrollLeft + scrollAmount;
-      scrollRef.current.scrollTo({ left: newScrollLeft, behavior: "smooth" });
-
-      const newIndex =
-        direction === "left"
-          ? Math.max(0, currentIndex - 1)
-          : Math.min(projects.length - 1, currentIndex + 1);
-      setCurrentIndex(newIndex);
-    }
-  };
-
   return (
     <section
       id="projects"
@@ -109,197 +83,119 @@ function Projects({ projects }: Props) {
           />
         </motion.div>
 
-        {/* Projects Container */}
-        <div className="relative">
-          {/* Navigation Buttons */}
-          {projects.length > 1 && (
-            <>
-              <button
-                onClick={() => scroll("left")}
-                className="absolute left-0 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full transition-all duration-300 hover:scale-110 hidden md:block"
-                style={{
-                  backgroundColor: "#111827",
-                  border: "1px solid #1F2937",
-                }}
-              >
-                <ArrowLeftIcon
-                  className="w-5 h-5"
-                  style={{ color: "#3B82F6" }}
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {projects?.map((project, i) => (
+            <motion.div
+              key={project._id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              viewport={{ once: true }}
+              className="rounded-2xl overflow-hidden shadow-2xl transition-all duration-300 hover:-translate-y-1"
+              style={{
+                backgroundColor: "#111827",
+                border: "1px solid #1F2937",
+              }}
+            >
+              {/* Project Image */}
+              <div className="relative h-48 md:h-52 overflow-hidden bg-gradient-to-br from-[#0B0F19] to-[#1F2937]">
+                <img
+                  src={urlFor(project?.image).url()}
+                  alt={project?.title}
+                  className="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105"
                 />
-              </button>
-              <button
-                onClick={() => scroll("right")}
-                className="absolute right-0 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full transition-all duration-300 hover:scale-110 hidden md:block"
-                style={{
-                  backgroundColor: "#111827",
-                  border: "1px solid #1F2937",
-                }}
-              >
-                <ArrowRightIcon
-                  className="w-5 h-5"
-                  style={{ color: "#3B82F6" }}
-                />
-              </button>
-            </>
-          )}
-
-          {/* Horizontal Scroll Container */}
-          <div
-            ref={scrollRef}
-            className="flex overflow-x-auto scroll-smooth snap-x snap-mandatory gap-6 pb-8 px-4"
-            style={{
-              scrollbarWidth: "none",
-              msOverflowStyle: "none",
-            }}
-          >
-            <style jsx>{`
-              div::-webkit-scrollbar {
-                display: none;
-              }
-            `}</style>
-
-            {projects?.map((project, i) => (
-              <div
-                key={project._id}
-                className="flex-shrink-0 w-full max-w-4xl mx-auto snap-center"
-              >
+                {/* Project Counter Badge */}
                 <div
-                  className="rounded-2xl overflow-hidden shadow-2xl transition-all duration-500 hover:shadow-[#3B82F6]/10"
+                  className="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-semibold"
                   style={{
-                    backgroundColor: "#111827",
-                    border: "1px solid #1F2937",
+                    backgroundColor: "rgba(11, 15, 25, 0.8)",
+                    backdropFilter: "blur(8px)",
+                    color: "#3B82F6",
+                    border: "1px solid rgba(59, 130, 246, 0.3)",
                   }}
                 >
-                  {/* Project Image */}
-                  <div className="relative h-64 md:h-96 overflow-hidden bg-gradient-to-br from-[#0B0F19] to-[#1F2937]">
-                    <img
-                      src={urlFor(project?.image).url()}
-                      alt={project?.title}
-                      className="w-full h-full object-contain transition-transform duration-500 hover:scale-105"
-                    />
-                    {/* Project Counter Badge */}
-                    <div
-                      className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold"
-                      style={{
-                        backgroundColor: "#0B0F19/80",
-                        backdropFilter: "blur(8px)",
-                        color: "#3B82F6",
-                        border: "1px solid #3B82F6/30",
-                      }}
-                    >
-                      {String(i + 1).padStart(2, "0")} /{" "}
-                      {String(projects.length).padStart(2, "0")}
-                    </div>
-                  </div>
-
-                  {/* Project Content */}
-                  <div className="p-6 md:p-8">
-                    <h3
-                      className="text-2xl md:text-3xl font-bold mb-2"
-                      style={{ color: "#E5E7EB" }}
-                    >
-                      {project?.title}
-                    </h3>
-
-                    {/* Technologies */}
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project?.technologies.map((technology) => (
-                        <div
-                          key={technology._id}
-                          className="flex items-center gap-2 px-3 py-1.5 rounded-full"
-                          style={{
-                            backgroundColor: "#1F2937",
-                            border: "1px solid #374151",
-                          }}
-                        >
-                          <img
-                            className="w-5 h-5 rounded-full"
-                            src={urlFor(technology.image).url()}
-                            alt={technology.title}
-                          />
-                          <span
-                            className="text-xs"
-                            style={{ color: "#9CA3AF" }}
-                          >
-                            {technology.title}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Summary */}
-                    <p
-                      className="text-sm md:text-base leading-relaxed mb-6"
-                      style={{ color: "#9CA3AF" }}
-                    >
-                      {project?.summary}
-                    </p>
-
-                    {/* Links */}
-                    <div className="flex gap-4">
-                      {project?.linkToBuild && (
-                        <a
-                          href={project.linkToBuild}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:-translate-y-0.5"
-                          style={{
-                            backgroundColor: "#3B82F6",
-                            color: "#0B0F19",
-                          }}
-                        >
-                          <LinkIcon className="w-4 h-4" />
-                          Live Demo
-                        </a>
-                      )}
-                      {project?.githubLink && (
-                        <a
-                          href={project.githubLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:-translate-y-0.5"
-                          style={{
-                            border: "1px solid #3B82F6",
-                            color: "#E5E7EB",
-                            backgroundColor: "transparent",
-                          }}
-                        >
-                          <CodeBracketIcon className="w-4 h-4" />
-                          Source Code
-                        </a>
-                      )}
-                    </div>
-                  </div>
+                  {String(i + 1).padStart(2, "0")}
                 </div>
               </div>
-            ))}
-          </div>
 
-          {/* Progress Dots */}
-          {projects.length > 1 && (
-            <div className="flex justify-center gap-2 mt-6">
-              {projects.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => {
-                    if (scrollRef.current) {
-                      const scrollAmount = i * scrollRef.current.clientWidth;
-                      scrollRef.current.scrollTo({
-                        left: scrollAmount,
-                        behavior: "smooth",
-                      });
-                      setCurrentIndex(i);
-                    }
-                  }}
-                  className="h-2 rounded-full transition-all duration-300"
-                  style={{
-                    width: currentIndex === i ? "24px" : "8px",
-                    backgroundColor: currentIndex === i ? "#3B82F6" : "#1F2937",
-                  }}
-                />
-              ))}
-            </div>
-          )}
+              {/* Project Content */}
+              <div className="p-5 md:p-6 flex flex-col h-full">
+                <h3
+                  className="text-lg md:text-xl font-bold mb-2"
+                  style={{ color: "#E5E7EB" }}
+                >
+                  {project?.title}
+                </h3>
+
+                {/* Technologies */}
+                <div className="flex flex-wrap gap-2 mb-3">
+                  {project?.technologies?.map((technology) => (
+                    <div
+                      key={technology._id}
+                      className="flex items-center gap-1.5 px-2.5 py-1 rounded-full"
+                      style={{
+                        backgroundColor: "#1F2937",
+                        border: "1px solid #374151",
+                      }}
+                    >
+                      <img
+                        className="w-4 h-4 rounded-full"
+                        src={urlFor(technology.image).url()}
+                        alt={technology.title}
+                      />
+                      <span className="text-xs" style={{ color: "#9CA3AF" }}>
+                        {technology.title}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Summary */}
+                <p
+                  className="text-sm leading-relaxed mb-5 line-clamp-4"
+                  style={{ color: "#9CA3AF" }}
+                >
+                  {project?.summary}
+                </p>
+
+                {/* Links */}
+                <div className="flex gap-3 mt-auto">
+                  {project?.linkToBuild && (
+                    <a
+                      href={project.linkToBuild}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium transition-all duration-300 hover:-translate-y-0.5"
+                      style={{
+                        backgroundColor: "#3B82F6",
+                        color: "#0B0F19",
+                      }}
+                    >
+                      <LinkIcon className="w-3.5 h-3.5" />
+                      Live Demo
+                    </a>
+                  )}
+                  {project?.githubLink && (
+                    <a
+                      href={project.githubLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium transition-all duration-300 hover:-translate-y-0.5"
+                      style={{
+                        border: "1px solid #3B82F6",
+                        color: "#E5E7EB",
+                        backgroundColor: "transparent",
+                      }}
+                    >
+                      <CodeBracketIcon className="w-3.5 h-3.5" />
+                      Source Code
+                    </a>
+                  )}
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
