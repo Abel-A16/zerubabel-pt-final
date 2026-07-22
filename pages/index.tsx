@@ -28,47 +28,69 @@ type Props = {
 
 export default function Home({pageInfo, experiences, skills, projects, socials,}:Props) {
   return (
-    <div className=" bg-[rgb(36,36,36)] text-white min-h-screen
+    <div
+      className=" bg-[rgb(36,36,36)] text-white min-h-screen
     snap-y snap-mandatory overflow-y-scroll 
-    overflow-x-hidden z-0 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#778A35]/80">
-        <Head>
-          <title>{pageInfo.name} Portfolio</title>
-        </Head>
-        
-        <Header socials = {socials}/>
+    overflow-x-hidden z-0 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#778A35]/80"
+    >
+      <Head>
+        <title>{pageInfo.name} | Fullstack Developer & Technical Trainer</title>
+        <meta
+          name="description"
+          content={`${pageInfo.name} — Fullstack developer and technical trainer based in Addis Ababa, Ethiopia. View my projects, skills, and experience.`}
+        />
+        <meta property="og:title" content={`${pageInfo.name} | Portfolio`} />
+        <meta
+          property="og:description"
+          content="Fullstack developer, digital systems builder, and technical trainer."
+        />
+        <meta
+          property="og:image"
+          content="https://zerubabelendale.vercel.app/og-image.png"
+        />
+        <meta property="og:url" content="https://zerubabelendale.vercel.app" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+      </Head>
 
-        <section id="hero" className=" snap-start">
-          <Hero pageInfo = {pageInfo}/>
-        </section>
+      <Header socials={socials} />
 
-        <section id='about' className=" snap-center">
-          <About pageInfo = {pageInfo}/>
-        </section>
-          
-        <section id='experiance' className=" snap-center">
-          <WorkExperiance experiences = {experiences}/>
-        </section>
+      <section id="hero" className=" snap-start">
+        <Hero pageInfo={pageInfo} />
+      </section>
 
-        <section id="skills" className=" snap-start">
-          <Skills skills = {skills}/>
-        </section>
+      <section id="about" className=" snap-center">
+        <About pageInfo={pageInfo} />
+      </section>
 
-        <section id="projects" className=" snap-start">
-          <Projects projects = {projects}/>
-        </section>
+      <section id="experiance" className=" snap-center">
+        <WorkExperiance experiences={experiences} />
+      </section>
 
-        <section id="contact" className=" snap-start">
-          <ContactMe/>
-        </section>
-        <footer className="sticky bottom-12 w-full cursor-pointer">
-          <div className=" flex items-center justify-end">
-           <a href="#hero"> <ChevronDoubleUpIcon className="w-10 h-10 mr-5 float-right items-center text-[#778A35] filter 
-           hover:bg-[#778a35] hover:text-gray-800 bg-slate-200 rounded-full"/></a>
-          </div>
-        </footer>
+      <section id="skills" className=" snap-start">
+        <Skills skills={skills} />
+      </section>
 
+      <section id="projects" className=" snap-start">
+        <Projects projects={projects} />
+      </section>
+
+      <section id="contact" className=" snap-start">
+        <ContactMe />
+      </section>
+      <footer className="sticky bottom-12 w-full cursor-pointer">
+        <div className=" flex items-center justify-end">
+          <a href="#hero">
+            {" "}
+            <ChevronDoubleUpIcon
+              className="w-10 h-10 mr-5 float-right items-center text-[#778A35] filter 
+           hover:bg-[#778a35] hover:text-gray-800 bg-slate-200 rounded-full"
+            />
+          </a>
+        </div>
+      </footer>
     </div>
-  )
+  );
 }
 
 export const getStaticProps : GetStaticProps<Props> = async() => {

@@ -1,5 +1,5 @@
 {
-  "name": "portfolio-yt-2.0",
+  "name": "zerubabel-portfolio",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -19,7 +19,7 @@
     "next-sanity": "^7.1.4",
     "react": "^18",
     "react-dom": "^18",
-    "react-hook-form": "^7.51.3",
+    "react-hook-form": "^7.82.0",
     "react-simple-typewriter": "^5.0.1",
     "react-social-icons": "^6.16.0",
     "sanity": "^3.39.1",

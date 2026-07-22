@@ -136,8 +136,8 @@ function ContactMe({}: Props) {
               className="text-sm md:text-base mb-8"
               style={{ color: "#9CA3AF" }}
             >
-              Have a project in mind? I&apos;d love to hear about it. Reach out to me
-              and let&apos;s create something amazing together.
+              Have a project in mind? I&apos;d love to hear about it. Reach out
+              to me and let&apos;s create something amazing together.
             </p>
 
             {/* Contact Info */}
@@ -151,7 +151,7 @@ function ContactMe({}: Props) {
               >
                 <div
                   className="p-3 rounded-lg"
-                  style={{ backgroundColor: "#3B82F6/10" }}
+                  style={{ backgroundColor: "rgba(59, 130, 246, 0.1)" }}
                 >
                   <PhoneIcon className="w-6 h-6" style={{ color: "#3B82F6" }} />
                 </div>
@@ -177,7 +177,7 @@ function ContactMe({}: Props) {
               >
                 <div
                   className="p-3 rounded-lg"
-                  style={{ backgroundColor: "#22C55E/10" }}
+                  style={{ backgroundColor: "rgba(34, 197, 94, 0.1)" }}
                 >
                   <EnvelopeIcon
                     className="w-6 h-6"
@@ -206,7 +206,7 @@ function ContactMe({}: Props) {
               >
                 <div
                   className="p-3 rounded-lg"
-                  style={{ backgroundColor: "#3B82F6/10" }}
+                  style={{ backgroundColor: "rgba(59, 130, 246, 0.1)" }}
                 >
                   <MapPinIcon
                     className="w-6 h-6"
@@ -340,12 +340,12 @@ function ContactMe({}: Props) {
                   exit={{ opacity: 0 }}
                   className="text-center p-3 rounded-lg"
                   style={{
-                    backgroundColor: "#22C55E/10",
-                    border: "1px solid #22C55E/30",
+                    backgroundColor: "rgba(34, 197, 94, 0.1)",
+                    border: "1px solid rgba(34, 197, 94, 0.3)",
                     color: "#22C55E",
                   }}
                 >
-                  Message sent successfully!
+                  Opening your email client to send this message...
                 </motion.div>
               )}
             </form>
