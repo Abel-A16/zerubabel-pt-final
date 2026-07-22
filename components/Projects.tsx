@@ -85,117 +85,161 @@ function Projects({ projects }: Props) {
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {projects?.map((project, i) => (
-            <motion.div
-              key={project._id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-              viewport={{ once: true }}
-              className="rounded-2xl overflow-hidden shadow-2xl transition-all duration-300 hover:-translate-y-1"
-              style={{
-                backgroundColor: "#111827",
-                border: "1px solid #1F2937",
-              }}
-            >
-              {/* Project Image */}
-              <div className="relative h-48 md:h-52 overflow-hidden bg-gradient-to-br from-[#0B0F19] to-[#1F2937]">
-                <img
-                  src={urlFor(project?.image).url()}
-                  alt={project?.title}
-                  className="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105"
-                />
-                {/* Project Counter Badge */}
+          {projects?.map((project, i) => {
+            let domain = "";
+            try {
+              if (project?.linkToBuild) {
+                domain = new URL(project.linkToBuild).hostname.replace(
+                  "www.",
+                  "",
+                );
+              }
+            } catch {
+              domain = "";
+            }
+            const isDev = Boolean(project?.githubLink);
+
+            return (
+              <motion.div
+                key={project._id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                viewport={{ once: true }}
+                className="group rounded-2xl overflow-hidden shadow-2xl transition-all duration-300 hover:-translate-y-1"
+                style={{
+                  backgroundColor: "#111827",
+                  border: "1px solid #1F2937",
+                }}
+              >
+                {/* Browser Chrome Mockup */}
                 <div
-                  className="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-semibold"
+                  className="relative overflow-hidden"
                   style={{
-                    backgroundColor: "rgba(11, 15, 25, 0.8)",
-                    backdropFilter: "blur(8px)",
-                    color: "#3B82F6",
-                    border: "1px solid rgba(59, 130, 246, 0.3)",
+                    border: "1px solid #1F2937",
+                    borderBottom: "none",
                   }}
                 >
-                  {String(i + 1).padStart(2, "0")}
-                </div>
-              </div>
-
-              {/* Project Content */}
-              <div className="p-5 md:p-6 flex flex-col h-full">
-                <h3
-                  className="text-lg md:text-xl font-bold mb-2"
-                  style={{ color: "#E5E7EB" }}
-                >
-                  {project?.title}
-                </h3>
-
-                {/* Technologies */}
-                <div className="flex flex-wrap gap-2 mb-3">
-                  {project?.technologies?.map((technology) => (
-                    <div
-                      key={technology._id}
-                      className="flex items-center gap-1.5 px-2.5 py-1 rounded-full"
-                      style={{
-                        backgroundColor: "#1F2937",
-                        border: "1px solid #374151",
-                      }}
-                    >
-                      <img
-                        className="w-4 h-4 rounded-full"
-                        src={urlFor(technology.image).url()}
-                        alt={technology.title}
-                      />
-                      <span className="text-xs" style={{ color: "#9CA3AF" }}>
-                        {technology.title}
-                      </span>
+                  {/* Browser top bar */}
+                  <div
+                    className="flex items-center gap-2 px-4 py-2.5"
+                    style={{ backgroundColor: "#0B0F19" }}
+                  >
+                    <div className="flex gap-1.5">
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#EF4444]" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#EAB308]" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#22C55E]" />
                     </div>
-                  ))}
+                    {domain && (
+                      <div
+                        className="flex-1 mx-2 truncate rounded-md px-3 py-1 text-[11px]"
+                        style={{
+                          backgroundColor: "#111827",
+                          color: "#6B7280",
+                          border: "1px solid #1F2937",
+                        }}
+                      >
+                        {domain}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Image, normalized to a fixed aspect ratio regardless of source size */}
+                  <div className="relative w-full aspect-video overflow-hidden">
+                    <img
+                      src={urlFor(project?.image).url()}
+                      alt={project?.title}
+                      className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
                 </div>
 
-                {/* Summary */}
-                <p
-                  className="text-sm leading-relaxed mb-5 line-clamp-4"
-                  style={{ color: "#9CA3AF" }}
-                >
-                  {project?.summary}
-                </p>
+                {/* Project Content */}
+                <div className="p-5 md:p-6 flex flex-col h-full">
+                  {/* Eyebrow category label */}
+                  <span
+                    className="text-[11px] font-semibold tracking-wider uppercase mb-1.5"
+                    style={{ color: isDev ? "#3B82F6" : "#22C55E" }}
+                  >
+                    {isDev ? "Development" : "Marketing / SEO"}
+                  </span>
 
-                {/* Links */}
-                <div className="flex gap-3 mt-auto">
-                  {project?.linkToBuild && (
-                    <a
-                      href={project.linkToBuild}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium transition-all duration-300 hover:-translate-y-0.5"
-                      style={{
-                        backgroundColor: "#3B82F6",
-                        color: "#0B0F19",
-                      }}
-                    >
-                      <LinkIcon className="w-3.5 h-3.5" />
-                      Live Demo
-                    </a>
-                  )}
-                  {project?.githubLink && (
-                    <a
-                      href={project.githubLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium transition-all duration-300 hover:-translate-y-0.5"
-                      style={{
-                        border: "1px solid #3B82F6",
-                        color: "#E5E7EB",
-                        backgroundColor: "transparent",
-                      }}
-                    >
-                      <CodeBracketIcon className="w-3.5 h-3.5" />
-                      Source Code
-                    </a>
-                  )}
+                  <h3
+                    className="text-lg md:text-xl font-bold mb-2"
+                    style={{ color: "#E5E7EB" }}
+                  >
+                    {project?.title}
+                  </h3>
+
+                  {/* Technologies */}
+                  <div className="flex flex-wrap gap-2 mb-3">
+                    {project?.technologies?.map((technology) => (
+                      <div
+                        key={technology._id}
+                        className="flex items-center gap-1.5 px-2.5 py-1 rounded-full"
+                        style={{
+                          backgroundColor: "#1F2937",
+                          border: "1px solid #374151",
+                        }}
+                      >
+                        <img
+                          className="w-4 h-4 rounded-full"
+                          src={urlFor(technology.image).url()}
+                          alt={technology.title}
+                        />
+                        <span className="text-xs" style={{ color: "#9CA3AF" }}>
+                          {technology.title}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Summary */}
+                  <p
+                    className="text-sm leading-relaxed mb-5 line-clamp-4"
+                    style={{ color: "#9CA3AF" }}
+                  >
+                    {project?.summary}
+                  </p>
+
+                  {/* Links */}
+                  <div className="flex gap-3 mt-auto">
+                    {project?.linkToBuild && (
+                      <a
+                        href={project.linkToBuild}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium transition-all duration-300 hover:-translate-y-0.5"
+                        style={{
+                          backgroundColor: "#3B82F6",
+                          color: "#0B0F19",
+                        }}
+                      >
+                        <LinkIcon className="w-3.5 h-3.5" />
+                        Live Demo
+                      </a>
+                    )}
+                    {project?.githubLink && (
+                      <a
+                        href={project.githubLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium transition-all duration-300 hover:-translate-y-0.5"
+                        style={{
+                          border: "1px solid #3B82F6",
+                          color: "#E5E7EB",
+                          backgroundColor: "transparent",
+                        }}
+                      >
+                        <CodeBracketIcon className="w-3.5 h-3.5" />
+                        Source Code
+                      </a>
+                    )}
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
